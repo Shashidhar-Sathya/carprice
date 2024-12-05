@@ -317,8 +317,16 @@ than when the polynomial degree = 2, where the impact of features decline after 
 |5660.18|7472.78|0.61|Grid Search With Degree-2 Polynomials
 |4921.49|6775.24|0.68|Grid Search With Degree-1 Polynomials
 
-The **Used Car Price** prediction model for sales data from the given data set is not a good model 
-that can be used for predicting the price.
+
+## Rationale for Model Evaluation Metrics
+1. Linear Regression with Standard Scaler performed just barely better than Dummy Regression ruling out its use in any business case.  This had RSME error of 10721 and accuracy of 19%, meaning only 19% percent predictions are accurate.
+
+2. Lasso and Ridge Regressions models performed much better when  both numerical and categorical features, hyperparameters of best alpha = 1 were used.  The accuracy jumped to 48% and RSME dropping to 8612 from 10721.
+
+3. #### The Best model performance was reached when "Manufacturer" feature was included along with hyperparameter of best alpha = 0.1 and polynomial degree = 1.  The accuracy was 68% with RMSE of 6775 (dropping further from 8612). 
+
+### Overall Evaluation 
+Based on the output of the above prediction models, the **Used Car Price** prediction model for sales data from the given data set is not a good model that can be used for predicting the price.
 
 ### Primary reasons for poor performance are:
 1. There are approximately 120,000 Vechicles with **SAME** VIN number, which are duplicated many 
